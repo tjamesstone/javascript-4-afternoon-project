@@ -64,6 +64,20 @@ class Employee {
 
 //Code Here
 
+class Manager extends Employee {
+  constructor(first_name, last_name, email, age, reports){
+    super(first_name, last_name, email, age)
+    this.reports = []
+  }
+
+  hire(newEmployee){
+    this.reports.push(newEmployee)
+  }
+  fire(index){
+    this.reports.splice(index, 1)
+  }
+}
+
 
 
 
@@ -90,6 +104,15 @@ class Employee {
 
 //Code Here
 
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age, reports, title, bonus){
+    super(first_name, last_name, email, age, reports)
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+
+  
+}
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
