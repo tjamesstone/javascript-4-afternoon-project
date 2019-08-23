@@ -113,24 +113,24 @@ class ProgressiveManager extends Manager {
 
   hire(){
     super.hire()
-    if(this.reports === 0){
+    let reportCount = this.reports.length
+    if (reportCount === 0) {
       this.title = 'Not a manager'
-    } else if (this.reports > 0 && this.reports <= 3){
+    } else if (reportCount > 0 && reportCount <=3) {
       this.title = 'Barely Manager'
-    } else if (this.reports >3 && this.reports <= 10){
+    } else if (reportCount >= 4 && reportCount <= 10) {
       this.title = 'Mostly Manager'
-    } else if (this.reports >10 && this.reports <= 50){
+    } else if (reportCount >=11 && reportCount <= 50) {
       this.title = 'Manager'
-    } else if (this.reports > 50 && this.reports <=100){
+    } else if (reportCount >=51 && reportCount <=100) {
       this.title = 'Manager Plus'
-    } else if(this.reports >100){
-      this.title = "Bestest Manager"
-    } 
+    } else if (reportCount >= 101) {
+      this.title = 'Bestest Manager'
+    }
   }
 
   
   fire(){
-    super.hire()
     this.bonus += 100
   }
 
@@ -162,5 +162,36 @@ class ProgressiveManager extends Manager {
 */
 
 //Code Here
+
+class Machine {
+  constructor(widgets_made_count, wear_and_tear_count, needs_reboot){
+    this.widgets_made_count = 0
+    this.wear_and_tear_count = 0
+    this.needs_reboot = false
+  }
+
+  makeWidgets (num){
+  this.widgets_made_count += num;
+    let widgetsMade = this.widgets_made_count
+    function setWear (){
+      let wearCount = widgetsMade/50
+      
+      return wearCount
+    }
+    this.wear_and_tear_count = setWear();
+  }
+
+
+  fixMachine (){
+    this.needs_reboot = true
+  }
+  
+  reboot(){return () => {
+    this.wear_and_tear_count -=10
+    this.needs_reboot = false
+      }
+  }
+  
+}
 
 
